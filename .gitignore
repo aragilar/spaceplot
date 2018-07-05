@@ -1,0 +1,8 @@
+.cache
+.tox
+spaceplot.egg-info
+_build
+.coverage
+dist
+build
+.pytest_cache

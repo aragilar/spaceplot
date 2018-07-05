@@ -1,0 +1,17 @@
+include versioneer.py spaceplot/_version.py
+include DESCRIPTION.rst
+include README.md
+include LICENSE.txt
+include code_of_conduct.md
+include CONTRIBUTING.md
+recursive-include docs *
+recursive-exclude docs/_build *
+include doc-requirements.txt
+include test-requirements.txt
+recursive-include tests *.py
+recursive-include paper *
+include pylintrc
+include tox.ini
+include pypi-intro.rst
+exclude appveyor.yml
+exclude bors.toml
