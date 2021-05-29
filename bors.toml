@@ -1,4 +1,6 @@
 status = [
-  "continuous-integration/travis-ci/push",
-  "continuous-integration/appveyor/branch"
+  "aragilar.spaceplot",
+  "codecov/patch",
+  "codecov/project",
 ]
+
