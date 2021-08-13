@@ -15,3 +15,5 @@ include tox.ini
 include pypi-intro.rst
 exclude appveyor.yml
 exclude bors.toml
+exclude azure-pipelines.yml
+recursive-exclude ci

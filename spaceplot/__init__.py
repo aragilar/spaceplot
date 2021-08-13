@@ -1,14 +1,23 @@
-
+"""
+Plot multidimensional values against each other.
+"""
 
 from numpy import array as _array
 from matplotlib.colors import Normalize as _Normalize
 from matplotlib.gridspec import GridSpec as _GridSpec
 from matplotlib.pyplot import figure as _figure
 
+from ._version import get_versions
+__version__ = get_versions()['version']
+del get_versions
+
 
 def spaceplots(
     inputs, outputs, input_names=None, output_names=None, limits=None, **kwargs
 ):
+    """
+    Plot multidimensional values against each other.
+    """
     num_samples, num_inputs = inputs.shape
     if input_names is not None:
         if len(input_names) != num_inputs:
@@ -30,7 +39,7 @@ def spaceplots(
             raise RuntimeError(
                 "There must be a upper and lower limit for each output"
             )
-        elif limits.shape[0] != num_outputs:
+        if limits.shape[0] != num_outputs:
             raise RuntimeError("Output data and limits don't match")
     else:
         limits = [[None, None]] * num_outputs
@@ -38,7 +47,8 @@ def spaceplots(
     for out_index in range(num_outputs):
         yield _subspace_plot(
             inputs, outputs[:, out_index], input_names=input_names,
-            output_name=output_names[out_index], min_output=limits[out_index][0],
+            output_name=output_names[out_index],
+            min_output=limits[out_index][0],
             max_output=limits[out_index][1], **kwargs
         )
 
@@ -46,6 +56,9 @@ def spaceplots(
 def _setup_axes(
     *, input_names, histogram_labels=False, constrained_layout=True
 ):
+    """
+    Setup axes
+    """
     num_inputs = len(input_names)
     fig = _figure(constrained_layout=constrained_layout)
     axes = _array(
@@ -96,6 +109,9 @@ def _subspace_plot(
     inputs, output, *, input_names, output_name, scatter_args=None,
     histogram_args=None, min_output=None, max_output=None
 ):
+    """
+    Do actual plotting
+    """
     if scatter_args is None:
         scatter_args = {}
     if histogram_args is None:
@@ -144,13 +160,14 @@ def _subspace_plot(
 
 
 def _plot_hist(values, *, axis, **kwargs):
+    """
+    Plot histogram subplot
+    """
     return axis.hist(values, **kwargs)
 
 
 def _plot_scatter(*, x, y, z, axis, norm, **kwargs):
+    """
+    Plot scatter subplot
+    """
     return axis.scatter(x=x, y=y, c=z, norm=norm, **kwargs)
-
-
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions
