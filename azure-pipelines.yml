@@ -65,24 +65,24 @@ jobs:
       parameters:
         platform: linux
 
-- job: 'macOS1015'
-  pool:
-    vmImage: macOS-10.15
-  strategy:
-    matrix:
-      py37:
-        python.version: '3.7'
-        TOXENV: py37
-      py38:
-        python.version: '3.8'
-        TOXENV: py38
-      py39:
-        python.version: '3.9'
-        TOXENV: py39
-    maxParallel: 4
-
-  steps:
-    - template: ci/azure-pipelines-steps.yml
-      parameters:
-        platform: macos
-
+#- job: 'macOS1015'
+#  pool:
+#    vmImage: macOS-10.15
+#  strategy:
+#    matrix:
+#      py37:
+#        python.version: '3.7'
+#        TOXENV: py37
+#      py38:
+#        python.version: '3.8'
+#        TOXENV: py38
+#      py39:
+#        python.version: '3.9'
+#        TOXENV: py39
+#    maxParallel: 4
+#
+#  steps:
+#    - template: ci/azure-pipelines-steps.yml
+#      parameters:
+#        platform: macos
+#
