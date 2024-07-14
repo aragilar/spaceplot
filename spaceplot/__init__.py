@@ -7,9 +7,8 @@ from matplotlib.colors import Normalize as _Normalize
 from matplotlib.gridspec import GridSpec as _GridSpec
 from matplotlib.pyplot import figure as _figure
 
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions
+from . import _version
+__version__ = _version.get_versions()['version']
 
 
 def spaceplots(
